@@ -14,6 +14,8 @@ import EmptyState from "../../components/common/EmptyState";
 
 import useDashboard from "../../hooks/useDashboard";
 
+import { formatCurrency } from "../../utils/currency";
+
 const AdminDashboardPage = () => {
   const {
     dashboard,
@@ -71,8 +73,8 @@ const AdminDashboardPage = () => {
 
         <StatCard
           title="Revenue"
-          value={`$${paidRevenue}`}
-          subtitle="Paid invoices"
+          value={formatCurrency(paidRevenue)}
+          subtitle="Total Paid Revenue"
           icon={<Wallet size={24} />}
         />
 
