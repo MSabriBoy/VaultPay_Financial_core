@@ -60,6 +60,3 @@ export {
   getClientInvoices,
   getInvoiceById,
 };
-
-//client1_id:"6a4444dae850fe3236e8ec67"
-//client2_id:"6a444994caae5b5e5e426641"

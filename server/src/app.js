@@ -14,6 +14,7 @@ import adminRoutes from "./routes/admin.routes.js";
 import invoiceRoutes from "./routes/invoice.routes.js";
 import paymentRoutes from "./routes/payment.routes.js";
 import webhookRoutes from "./routes/webhook.routes.js";
+import dashboardRoutes from "./routes/dashboard.routes.js";
 
 const app = express();
 
@@ -40,10 +41,6 @@ app.use(
     legacyHeaders: false,
   })
 );
-app.use("/api/webhooks/stripe", (req, res, next) => {
-
-  next();
-});
 app.use(
   "/api/webhooks/stripe",
   express.raw({
@@ -69,6 +66,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/invoices", invoiceRoutes);
 app.use("/api/payments", paymentRoutes);
+app.use("/api/dashboard", dashboardRoutes);
 
 app.use(notFound);
 
