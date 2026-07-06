@@ -10,4 +10,4 @@ const formatCurrency = (
   }).format(amount ?? 0);
 };
 
-export { formatCurrency };
+export default formatCurrency ;

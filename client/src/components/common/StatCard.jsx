@@ -1,11 +1,14 @@
+import { Link } from "react-router-dom";
+
 const StatCard = ({
   title,
   value,
   subtitle,
   icon,
+  to,
 }) => {
-  return (
-    <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-200 hover:shadow-md">
+  const content = (
+    <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg">
       <div className="flex items-start justify-between">
         <div>
           <p className="text-sm font-medium text-slate-500">
@@ -31,6 +34,16 @@ const StatCard = ({
       </div>
     </div>
   );
+
+  if (to) {
+    return (
+      <Link to={to}>
+        {content}
+      </Link>
+    );
+  }
+
+  return content;
 };
 
 export default StatCard;

@@ -12,7 +12,7 @@ import Spinner from "../../components/common/Spinner";
 import EmptyState from "../../components/common/EmptyState";
 
 import useDashboard from "../../hooks/useDashboard";
-import { formatCurrency } from "../../utils/currency";
+import formatCurrency from "../../utils/currency";
 const ClientDashboardPage = () => {
 
   const {
@@ -60,6 +60,7 @@ if (error) {
           value={totalInvoices}
           subtitle="Your invoices"
           icon={<FileText size={24} />}
+          to="/client/invoices"
         />
 
         <StatCard
@@ -67,6 +68,7 @@ if (error) {
           value={formatCurrency(paidAmount)}
           subtitle={`${paidInvoices} paid invoice${paidInvoices !== 1 ? "s" : ""}`}
           icon={<Wallet size={24} />}
+          to="/client/invoices?status=paid"
         />
 
         <StatCard
@@ -74,6 +76,7 @@ if (error) {
           value={pendingInvoices}
           subtitle="Pending invoices"
           icon={<Clock3 size={24} />}
+          to="/client/invoices?status=pending"
         />
       </div>
     </ClientLayout>

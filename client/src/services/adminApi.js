@@ -1,22 +1,11 @@
 import apiClient from "./apiClient";
 
-const getAdminDashboard = async () => {
-  const response = await apiClient.get(
-    "/dashboard/admin"
-  );
-
-  return response.data;
-};
-
-const getClientDashboard = async () => {
-  const response = await apiClient.get(
-    "/dashboard/client"
-  );
+const getClients = async () => {
+  const response = await apiClient.get("/admin/clients");
 
   return response.data;
 };
 
 export {
-  getAdminDashboard,
-  getClientDashboard,
+  getClients,
 };

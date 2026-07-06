@@ -3,7 +3,10 @@ import {
   FileText,
   Wallet,
   Clock3,
+  Plus,
 } from "lucide-react";
+
+import { Link } from "react-router-dom";
 
 import AdminLayout from "../../layouts/AdminLayout";
 
@@ -14,7 +17,7 @@ import EmptyState from "../../components/common/EmptyState";
 
 import useDashboard from "../../hooks/useDashboard";
 
-import { formatCurrency } from "../../utils/currency";
+import formatCurrency from "../../utils/currency";
 
 const AdminDashboardPage = () => {
   const {
@@ -24,11 +27,11 @@ const AdminDashboardPage = () => {
   } = useDashboard();
 
   const {
-  totalClients = 0,
-  totalInvoices = 0,
-  paidRevenue = 0,
-  pendingPayments = 0,
-} = dashboard ?? {};
+    totalClients = 0,
+    totalInvoices = 0,
+    paidRevenue = 0,
+    pendingPayments = 0,
+  } = dashboard ?? {};
 
   if (loading) {
     return (
@@ -41,10 +44,10 @@ const AdminDashboardPage = () => {
   if (error) {
     return (
       <AdminLayout>
-         <EmptyState
-        title="Failed to load dashboard"
-        description={error}
-      />
+        <EmptyState
+          title="Failed to load dashboard"
+          description={error}
+        />
       </AdminLayout>
     );
   }
@@ -54,6 +57,27 @@ const AdminDashboardPage = () => {
       <PageHeader
         title="Admin Dashboard"
         description="Monitor invoices, clients and payments."
+        actions={
+          <div className="flex gap-3">
+
+            <Link
+              to="/admin/invoices"
+              className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-100"
+            >
+              View All Invoices
+            </Link>
+
+            <Link
+              to="/admin/invoices/create"
+              className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-blue-700"
+            >
+              <Plus size={18} />
+
+              Create Invoice
+            </Link>
+
+          </div>
+        }
       />
 
       <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
@@ -69,6 +93,7 @@ const AdminDashboardPage = () => {
           value={totalInvoices}
           subtitle="Invoices created"
           icon={<FileText size={24} />}
+          to="/admin/invoices"
         />
 
         <StatCard
@@ -76,6 +101,7 @@ const AdminDashboardPage = () => {
           value={formatCurrency(paidRevenue)}
           subtitle="Total Paid Revenue"
           icon={<Wallet size={24} />}
+          to="/admin/invoices?status=paid"
         />
 
         <StatCard
@@ -83,6 +109,7 @@ const AdminDashboardPage = () => {
           value={pendingPayments}
           subtitle="Pending payments"
           icon={<Clock3 size={24} />}
+          to="/admin/invoices?status=pending"
         />
       </div>
     </AdminLayout>
