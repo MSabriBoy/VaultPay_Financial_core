@@ -14,8 +14,6 @@ router.use(protect);
 
 router.use(authorize(ROLES.ADMIN));
 
-router.get("/stats", getDashboardStats);
-
 router.get("/clients", getClients);
 
 export default router;

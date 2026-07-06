@@ -25,42 +25,68 @@ const handleStripeWebhook = async (req, res) => {
     }
 
     switch (event.type) {
-        case "checkout.session.completed": {
-            const session = event.data.object;
+      case "checkout.session.completed": {
+    try {
 
-            const invoice = await Invoice.findById(
-                session.metadata.invoiceId
-            );
+        const session = event.data.object;
 
-            if (!invoice) {
-                break;
-            }
+        const invoice = await Invoice.findById(
+            session.metadata.invoiceId
+        );
 
-            invoice.status = INVOICE_STATUS.PAID;
-
-            invoice.paidAt = new Date();
-
-            invoice.stripePaymentIntentId = session.payment_intent;
-
-            await invoice.populate("client", "name email");
-
-            const receipt = await generateReceiptPdf(invoice);
-
-            invoice.receiptFileName = receipt.fileName;
-
-            invoice.receiptPath = receipt.filePath;
-
-            await invoice.save();
-
-            try {
-                await sendReceiptEmail(invoice);
-            } catch (error) {
-                console.error("Receipt email failed:", error.message);
-            }
-
-            console.log(`Invoice ${invoice.invoiceNumber} marked as PAID`);
+        if (!invoice) {
             break;
         }
+
+        invoice.status = INVOICE_STATUS.PAID;
+        invoice.paidAt = new Date();
+        invoice.stripePaymentIntentId =
+            session.payment_intent;
+
+        await invoice.populate(
+            "client",
+            "name email"
+        );
+
+        await invoice.save();
+
+        const receipt =
+            await generateReceiptPdf(invoice);
+
+        invoice.receiptFileName =
+            receipt.fileName;
+
+        invoice.receiptPath =
+            receipt.filePath;
+
+            await invoice.save(); 
+
+        try {
+            await sendReceiptEmail(invoice);
+        } catch (error) {
+            console.error(
+                "Receipt email failed:",
+                error
+            );
+        }
+
+        console.log(
+            `Invoice ${invoice.invoiceNumber} marked as PAID`
+        );
+
+    } catch (error) {
+
+        console.error(
+            "CHECKOUT WEBHOOK ERROR"
+        );
+
+        console.error(error);
+
+        console.error(error.stack);
+    }
+
+    break;
+}
 
         default:
             console.log(`Unhandled event: ${event.type}`);

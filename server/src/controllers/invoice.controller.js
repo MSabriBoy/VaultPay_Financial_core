@@ -64,7 +64,7 @@ const getReceipt = asyncHandler(async (req, res) => {
 
   if (
     req.user.role === ROLES.CLIENT &&
-    invoice.client.toString() !== req.user._id.toString()
+    invoice.client._id.toString() !== req.user._id.toString()
   ) {
     throw new ApiError(403, "Access denied.");
   }

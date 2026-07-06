@@ -1,24 +1,20 @@
 import transporter from "../config/mail.js";
 import env from "../config/env.js";
 
+import receiptEmailTemplate from "../templates/receiptEmail.template.js";
+
 const sendReceiptEmail = async (invoice) => {
   await transporter.sendMail({
     from: env.mail.from,
+
     to: invoice.client.email,
-    subject: `Payment Receipt - ${invoice.invoiceNumber}`,
-    html: `
-      <h2>Payment Successful</h2>
 
-      <p>Hello ${invoice.client.name},</p>
+    replyTo: env.mail.from,
 
-      <p>Your payment has been received successfully.</p>
+    subject: `Payment Receipt • ${invoice.invoiceNumber} • VaultPay`,
 
-      <p><strong>Invoice:</strong> ${invoice.invoiceNumber}</p>
+    html: receiptEmailTemplate(invoice),
 
-      <p><strong>Amount:</strong> ${invoice.currency} ${invoice.amount}</p>
-
-      <p>Thank you for choosing Nexus Corporate Services.</p>
-    `,
     attachments: [
       {
         filename: invoice.receiptFileName,
@@ -28,4 +24,6 @@ const sendReceiptEmail = async (invoice) => {
   });
 };
 
-export { sendReceiptEmail };
+export {
+  sendReceiptEmail,
+};
