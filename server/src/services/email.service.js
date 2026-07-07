@@ -11,7 +11,7 @@ const sendReceiptEmail = async (invoice) => {
 
     replyTo: env.mail.from,
 
-    subject: `Payment Receipt • ${invoice.invoiceNumber} • VaultPay`,
+    subject: `Payment Receipt • ${invoice.invoiceNumber} • Nexus Corporate Services`,
 
     html: receiptEmailTemplate(invoice),
 

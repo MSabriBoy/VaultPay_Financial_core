@@ -56,7 +56,7 @@ style="
 margin:0;
 font-size:30px;
 ">
-VaultPay Financial Core
+Nexus Corporate Services
 </h1>
 
 <p
@@ -65,7 +65,7 @@ margin-top:10px;
 font-size:15px;
 opacity:.9;
 ">
-Secure Payment Receipt
+Official Payment Receipt
 </p>
 
 </td>
@@ -84,7 +84,7 @@ style="
 margin-top:0;
 color:#0f172a;
 ">
-Payment Successful 🎉
+Payment Successful
 </h2>
 
 <p
@@ -257,7 +257,9 @@ Regards,
 
 <br><br>
 
-<strong>VaultPay Finance Team</strong>
+<strong>Finance Team</strong>
+<br>
+Nexus Corporate Services
 
 </p>
 
@@ -276,11 +278,13 @@ font-size:13px;
 color:#64748b;
 ">
 
-© ${new Date().getFullYear()} VaultPay Financial Core
+© ${new Date().getFullYear()} Nexus Corporate Services
 
 <br><br>
 
-This is an automated payment confirmation email.
+This is an automated payment confirmation from
+Nexus Corporate Services. Please do not reply directly
+to this email.
 
 </td>
 

@@ -50,8 +50,7 @@ const handleStripeWebhook = async (req, res) => {
 
         await invoice.save();
 
-        const receipt =
-            await generateReceiptPdf(invoice);
+        const receipt = await generateReceiptPdf(invoice);
 
         invoice.receiptFileName =
             receipt.fileName;
