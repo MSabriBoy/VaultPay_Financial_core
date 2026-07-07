@@ -41,7 +41,6 @@ const getInvoiceDetails = asyncHandler(async (req, res) => {
     throw new ApiError(404, "Invoice not found.");
   }
 
-  // -------- IDOR Prevention --------
   if (
     req.user.role === ROLES.CLIENT &&
     invoice.client._id.toString() !== req.user._id.toString()
