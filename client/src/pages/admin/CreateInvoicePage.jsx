@@ -87,7 +87,6 @@ const {
         onSubmit={handleSubmit(onSubmit)}
         className="mx-auto max-w-3xl space-y-6 rounded-xl border border-slate-200 bg-white p-6 shadow-sm"
       >
-        {/* Client */}
 
         <div>
           <label className="mb-2 block text-sm font-medium text-slate-700">
@@ -125,8 +124,6 @@ const {
           )}
         </div>
 
-        {/* Amount */}
-
         <div>
           <label className="mb-2 block text-sm font-medium text-slate-700">
             Amount
@@ -147,8 +144,6 @@ const {
           )}
         </div>
 
-        {/* Description */}
-
         <div>
           <label className="mb-2 block text-sm font-medium text-slate-700">
             Description
@@ -166,8 +161,6 @@ const {
             </p>
           )}
         </div>
-
-        {/* Due Date */}
 
         <div>
           <label className="mb-2 block text-sm font-medium text-slate-700">

@@ -21,8 +21,6 @@ const Navbar = () => {
     <header className="border-b border-slate-200 bg-white shadow-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
 
-        {/* Logo */}
-
         <div className="flex items-center gap-10">
 
           <div className="flex items-center gap-3">
@@ -50,8 +48,6 @@ const Navbar = () => {
               </div>
             </Link>
           </div>
-
-          {/* Navigation */}
 
           <nav className="flex items-center gap-2">
 
@@ -101,8 +97,6 @@ const Navbar = () => {
           </nav>
 
         </div>
-
-        {/* User */}
 
         <div className="flex items-center gap-6">
 
