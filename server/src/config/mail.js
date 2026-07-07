@@ -3,12 +3,16 @@ import env from "./env.js";
 
 const transporter = nodemailer.createTransport({
   host: env.mail.host,
-  port: env.mail.port,
+  port: Number(env.mail.port),
   secure: false,
+  requireTLS: true,
+
   auth: {
     user: env.mail.email,
     pass: env.mail.password,
   },
-});
 
-export default transporter;
+  connectionTimeout: 30000,
+  greetingTimeout: 30000,
+  socketTimeout: 30000,
+});
