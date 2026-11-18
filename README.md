@@ -10,8 +10,8 @@ Built with the MERN stack, VaultPay focuses on security, reliability, and a smoo
 
 ## 🚀 Live Demo
 
-- **Frontend:** (Frontend Link)[https://vault-pay-financial-core-omega.vercel.app/]
-- **Backend API:** (Backend Link)[https://vaultpay-financial-core-y3n7.onrender.com]
+- **Frontend:** (Frontend Link) [https://vault-pay-financial-core-omega.vercel.app/]
+- **Backend API:** (Backend Link) [https://vaultpay-financial-core-y3n7.onrender.com]
 
 ## ✨ Key Features
 
